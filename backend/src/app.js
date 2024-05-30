@@ -1,25 +1,16 @@
 const express = require('express');
-const server = express();
 const mongoose = require('./config/database');
-const Account = require('./model/account');
-const Operation = require('./model/operation');
+const accountRoutes = require('./routes/index');
 
-server.get('/teste', (req, res) => {
-    res.send('MUDEI API!');
-});
+const app = express();
 
-server.get('/banco', (req, res) => {
-    res.json({"state" : mongoose.STATES[mongoose.connection.readyState]});
-});
+app.use(express.json());
+app.use('/api', accountRoutes);
 
-server.listen(3000, () => {
-    Account.createCollection().then(function(collection) {
-        console.log('Collection is created.');
-    })
-    
-    Operation.createCollection().then(function(collection) {
-        console.log('Collection is created.');
-    })
+const PORT = process.env.PORT || 3000;
 
-    console.log('API ONLINE TESTE');
+mongoose.connection.once('open', () => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
 });
