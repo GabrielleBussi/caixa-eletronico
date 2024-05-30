@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">ATM System</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form id="withdraw-form">
+                    <div class="form-group">
+                        <label for="clienteId">Client ID</label>
+                        <input type="text" id="clienteId" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount to withdraw</label>
+                        <input type="number" id="amount" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Withdraw</button>
+                </form>
+                <div id="result" class="mt-4"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
