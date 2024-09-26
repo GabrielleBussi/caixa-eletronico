@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Caixa Eletrônico</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .img-grande {
+            width: 80%; /* Ajuste o valor conforme necessário */
+            max-width: 400px; /* Define um limite máximo */
+        }
+    </style>
+</head>
+<body>
+<div id="app" class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <h1 class="text-center my-5">Caixa Eletrônico</h1>
+            <div class="form-group">
+                <label for="email">Email da Conta:</label>
+                <input type="email" id="email" class="form-control" v-model="email" required>
+            </div>
+            <div class="form-group">
+                <label for="amount">Valor do Saque:</label>
+                <input type="number" id="amount" class="form-control" v-model="valorSaque" required>
+            </div>
+            <button class="btn btn-success btn-block mt-2" @click="realizarSaque">Sacar</button>
+            <div class="alert alert-info mt-3" v-if="resultado">
+                {{ resultado }}
+            </div>
+        </div>
+        <div class="col-md-6 d-md-block text-center">
+            <img src="caixa.png" alt="caixa eletrônico" class="img-fluid img-grande mt-5">
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            valorSaque: null,
+            resultado: null,
+            email: '',
+        },
+        methods: {
+            async realizarSaque() {
+                const response = await fetch('/api/transactions/withdraw', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        amount: parseFloat(this.valorSaque),
+                        email: this.email
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    this.resultado = `Notas: ${JSON.stringify(data.notes)}<br>Saldo restante: R$${data.newAccount}`;
+                } else {
+                    this.resultado = 'Erro: ' + data.error;
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
