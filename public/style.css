@@ -9,3 +9,9 @@ h1 {
 .alert {
     font-size: 1.2em;
 }
+
+.img-grande {
+    width: 80%;
+    max-width: 400px;
+}
+
