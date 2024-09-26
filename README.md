@@ -22,7 +22,7 @@ Para executar este projeto, é necessário ter as seguintes ferramentas instalad
    - No banco de dados **saque**, crie uma coleção chamada **users**.
    - Adicione pelo menos um usuário à coleção. Apenas e-mails cadastrados serão aceitos no sistema. E-mails não cadastrados resultarão em uma mensagem de erro.
 
-4. Campos obrigatórios para a coleção **users**:
+4. Campos obrigatórios para a coleção users:
    - **email**: deve conter um e-mail válido do usuário.
    - **account**: representa o saldo disponível do usuário e deve ser um valor inteiro maior que zero. Exemplo: 10000.
 
