@@ -1,6 +1,6 @@
 const User = require('../models/User');
 
-exports.testTransactions = async (req, res) => { // Renomeado aqui
+exports.testTransactions = async (req, res) => {
     const { email, amount } = req.body;
     const user = await User.findOne({ email });
 
