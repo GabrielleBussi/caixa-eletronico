@@ -26,9 +26,7 @@
                 <input type="number" id="amount" class="form-control" v-model="valorSaque" required>
             </div>
             <button class="btn btn-success btn-block mt-2" @click="realizarSaque">Sacar</button>
-            <div class="alert alert-info mt-3" v-if="resultado">
-                {{ resultado }}
-            </div>
+            <div class="alert alert-info mt-3" v-if="resultado" v-html="resultado"></div>
         </div>
         <div class="col-md-6 d-md-block text-center">
             <img src="caixa.png" alt="caixa eletrônico" class="img-fluid img-grande mt-5">
