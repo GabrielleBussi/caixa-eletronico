@@ -18,11 +18,12 @@ Para executar este projeto, é necessário ter as seguintes ferramentas instalad
    `npm install`
 
 3. Configuração do banco de dados MongoDB:
+   - Para que o projeto funcione corretamente, o MongoDB deve estar rodando localmente na porta padrão (27017). 
    - Crie um banco de dados com o nome **saque**.
    - No banco de dados **saque**, crie uma coleção chamada **users**.
    - Adicione pelo menos um usuário à coleção. Apenas e-mails cadastrados serão aceitos no sistema. E-mails não cadastrados resultarão em uma mensagem de erro.
 
-4. Campos obrigatórios para a coleção users:
+5. Campos obrigatórios para a coleção users:
    - **email**: deve conter um e-mail válido do usuário.
    - **account**: representa o saldo disponível do usuário e deve ser um valor inteiro maior que zero. Exemplo: 10000.
 
